@@ -14,6 +14,6 @@ import java.util.List;
 public interface DAO<T> {
     void insertar(T t);
     void modificar(T t);
-    T eliminar(T t);
+   void eliminar(T t);
     List<T> listar();
 }

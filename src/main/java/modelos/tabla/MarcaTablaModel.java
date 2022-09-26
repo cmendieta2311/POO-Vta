@@ -16,14 +16,14 @@ import modelos.Marca;
 public class MarcaTablaModel extends AbstractTableModel {
 
     List<Marca> marcaList;
-    private String[] columnNames = new String[]{"ID","Descripcion"};
-    
-    Class[] columClass = new Class[]{Integer.class,String.class};
+    private String[] columnNames = new String[]{"ID", "Descripcion"};
+
+    Class[] columClass = new Class[]{Integer.class, String.class};
 
     public String getColumnNames(int column) {
         return columnNames[column];
     }
-    
+
     public Class<?> getColumnClass(int column) {
         return columClass[column];
     }
@@ -31,9 +31,6 @@ public class MarcaTablaModel extends AbstractTableModel {
 //    public void setColumnNames(String[] columnNames) {
 //        this.columnNames = columnNames;
 //    }
-
-   
-    
 
     public List<Marca> getMarcaList() {
         return marcaList;
@@ -52,19 +49,23 @@ public class MarcaTablaModel extends AbstractTableModel {
     public int getColumnCount() {
         return columnNames.length;
     }
+    
+    public Marca getEntityByRow(int index){
+        return marcaList.get(index);
+    }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Marca marca = marcaList.get(rowIndex);
-        
-      switch(columnIndex){
-          case 0:
-              return marca.getId();
-          case 1:
-              return marca.getDescripcion();
-                      
-      }
-       return "";
+
+        switch (columnIndex) {
+            case 0:
+                return marca.getId();
+            case 1:
+                return marca.getDescripcion();
+
+        }
+        return "";
     }
 
 }

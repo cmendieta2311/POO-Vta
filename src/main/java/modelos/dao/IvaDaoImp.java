@@ -25,7 +25,7 @@ public class IvaDaoImp implements DAO<Iva>{
     }
 
     @Override
-    public Iva eliminar(Iva t) {
+    public void eliminar(Iva t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -25,7 +25,7 @@ public class ClienteDaoImp implements DAO<Cliente>{
     }
 
     @Override
-    public Cliente eliminar(Cliente t) {
+    public void eliminar(Cliente t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

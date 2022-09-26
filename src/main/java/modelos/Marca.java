@@ -37,6 +37,12 @@ public class Marca {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public String toString() {
+        return id+ "-"+this.descripcion; //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
     
     
