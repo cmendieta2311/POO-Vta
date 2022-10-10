@@ -71,10 +71,10 @@ public class MarcaDaoImpl implements DAO<Marca> {
     }
     
     @Override
-    public List<Marca> listar() {
+    public List<Marca> listar(String valor) {
         ArrayList<Marca> listaMarca = new ArrayList<>();
         try {
-            sentencia = this.conec.prepareStatement("SELECT * FROM public.marca ORDER BY id ASC");
+            sentencia = this.conec.prepareStatement("SELECT * FROM marca where descripcion ilike '%"+valor+"%' ORDER BY id ASC");
             ResultSet rs = sentencia.executeQuery();
             
             while (rs.next()) {

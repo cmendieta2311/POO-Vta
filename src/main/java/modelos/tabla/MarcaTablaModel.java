@@ -19,9 +19,9 @@ public class MarcaTablaModel extends AbstractTableModel {
     private String[] columnNames = new String[]{"ID", "Descripcion"};
 
     Class[] columClass = new Class[]{Integer.class, String.class};
-
-    public String getColumnNames(int column) {
-        return columnNames[column];
+    
+    public String getColumnName(int i) {
+        return columnNames[i];
     }
 
     public Class<?> getColumnClass(int column) {

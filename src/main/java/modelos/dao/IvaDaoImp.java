@@ -30,7 +30,7 @@ public class IvaDaoImp implements DAO<Iva>{
     }
 
     @Override
-    public List<Iva> listar() {
+    public List<Iva> listar(String valor) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

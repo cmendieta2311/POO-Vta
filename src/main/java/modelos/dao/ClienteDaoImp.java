@@ -30,7 +30,7 @@ public class ClienteDaoImp implements DAO<Cliente>{
     }
 
     @Override
-    public List<Cliente> listar() {
+    public List<Cliente> listar(String valor) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

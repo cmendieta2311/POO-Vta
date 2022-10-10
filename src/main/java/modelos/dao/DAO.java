@@ -15,5 +15,5 @@ public interface DAO<T> {
     void insertar(T t);
     void modificar(T t);
    void eliminar(T t);
-    List<T> listar();
+    List<T> listar(String valor);
 }
