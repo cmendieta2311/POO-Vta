@@ -7,6 +7,7 @@ package controladores;
  */
 import modelos.dao.MarcaDaoImpl;
 import vistas.GUIMarca;
+import vistas.VentanaPrincipal;
 
 /**
  *
@@ -19,10 +20,10 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        MarcaDaoImpl abm = new MarcaDaoImpl();
-        GUIMarca gui = new GUIMarca(null, true);
-        MarcaController vistaMarca = new MarcaController(gui,abm);
-        vistaMarca.mostrarVentana();
+        VentanaPrincipal gui = new VentanaPrincipal();
+        ventanaPrincipalController vistaController = new ventanaPrincipalController(gui);
+        vistaController.mostrarVentana();
+     
     }
     
 }
