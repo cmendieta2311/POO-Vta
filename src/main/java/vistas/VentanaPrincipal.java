@@ -35,9 +35,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMMantenimiento = new javax.swing.JMenu();
         JMProducto = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        mProducto = new javax.swing.JMenuItem();
+        mMarca = new javax.swing.JMenuItem();
+        mIva = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         Usuario = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -48,6 +48,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Facturacion/LPII");
 
         jMArchivo.setText("Archivo");
 
@@ -64,19 +65,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         JMProducto.setText("Datos de productos");
 
-        jMenuItem6.setText("Producto");
-        JMProducto.add(jMenuItem6);
+        mProducto.setText("Producto");
+        JMProducto.add(mProducto);
 
-        jMenuItem7.setText("Marca");
-        JMProducto.add(jMenuItem7);
+        mMarca.setText("Marca");
+        JMProducto.add(mMarca);
 
-        jMenuItem8.setText("Iva");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        mIva.setText("Iva");
+        mIva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                mIvaActionPerformed(evt);
             }
         });
-        JMProducto.add(jMenuItem8);
+        JMProducto.add(mIva);
 
         jMMantenimiento.add(JMProducto);
 
@@ -117,9 +118,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void mIvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mIvaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_mIvaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,9 +171,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    public javax.swing.JMenuItem mIva;
+    public javax.swing.JMenuItem mMarca;
+    public javax.swing.JMenuItem mProducto;
     // End of variables declaration//GEN-END:variables
 }
