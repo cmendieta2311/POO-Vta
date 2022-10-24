@@ -7,16 +7,16 @@ package modelos.tabla;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import modelos.Marca;
+import modelos.Iva;
 
 /**
  *
  * @author Cris_
  */
-public class MarcaTablaModel extends AbstractTableModel {
+public class IvaTablaModel extends AbstractTableModel {
 
-    List<Marca> lista; // difinimos la lista 
-    private String[] columnNames = new String[]{"ID", "Descripcion"}; // definimos el nombre de las columnas
+    List<Iva> ivaList;
+    private String[] columnNames = new String[]{"ID", "Descripcion"};
 
     Class[] columClass = new Class[]{Integer.class, String.class};
     
@@ -32,17 +32,17 @@ public class MarcaTablaModel extends AbstractTableModel {
 //        this.columnNames = columnNames;
 //    }
 
-    public List<Marca> getMarcaList() {
-        return lista;
+    public List<Iva> getIvaList() {
+        return ivaList;
     }
 
-    public void setMarcaList(List<Marca> marcaList) {
-        this.lista = marcaList;
+    public void setIvaList(List<Iva> ivaList) {
+        this.ivaList = ivaList;
     }
 
     @Override
     public int getRowCount() {
-        return lista.size();
+        return ivaList.size();
     }
 
     @Override
@@ -50,19 +50,19 @@ public class MarcaTablaModel extends AbstractTableModel {
         return columnNames.length;
     }
     
-    public Marca getEntityByRow(int index){
-        return lista.get(index);
+    public Iva getEntityByRow(int index){
+        return ivaList.get(index);
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Marca marca = lista.get(rowIndex);
+        Iva iva = ivaList.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
-                return marca.getId();
+                return iva.getId();
             case 1:
-                return marca.getDescripcion();
+                return iva.getDescripcion();
 
         }
         return "";

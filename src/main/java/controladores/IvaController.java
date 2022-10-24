@@ -12,23 +12,23 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import modelos.Marca;
-import modelos.dao.MarcaDaoImpl;
-import modelos.tabla.MarcaTablaModel;
+import modelos.Iva;
+import modelos.dao.IvaDaoImpl;
+import modelos.tabla.IvaTablaModel;
 import vistas.GUIMarca;
 
 /**
  *
  * @author Cris_
  */
-public class MarcaController implements ActionListener {
+public class IvaController implements ActionListener {
 
     private GUIMarca gui;
-    private MarcaDaoImpl abm;
-    MarcaTablaModel modelo = new MarcaTablaModel();
+    private IvaDaoImpl abm;
+    IvaTablaModel modelo = new IvaTablaModel();
     private char operacion;
 
-    public MarcaController(GUIMarca guimarca, MarcaDaoImpl abm) {
+    public IvaController(GUIMarca guimarca, IvaDaoImpl abm) {
         this.gui = guimarca;
         this.abm = abm;
         //guimarca.setVisible(true);
@@ -41,11 +41,11 @@ public class MarcaController implements ActionListener {
         guimarca.btnCancelar.addActionListener(this);
         System.out.println("Dentro del constructor");
 //        //Recuperar lista de marcas
-//        List<Marca> lista = this.abm.listar();
+//        List<Iva> lista = this.abm.listar();
 //        //asignar lista de marca a modelo de tabla
-//        modelo.setMarcaList(lista);
+//        modelo.setIvaList(lista);
 //        //vincular modelo con tabla(GUI)
-//        llenarTabla(gui.tablaMarca);
+//        llenarTabla(gui.tabla);
         listar();
 
         gui.tabla.addMouseListener(new MouseAdapter() {
@@ -54,9 +54,9 @@ public class MarcaController implements ActionListener {
                 if (evt.getClickCount() > 1) {
                     JTable table = (JTable) evt.getSource();
                     int row = table.rowAtPoint(evt.getPoint());
-                    MarcaTablaModel model = (MarcaTablaModel) table.getModel();
+                    IvaTablaModel model = (IvaTablaModel) table.getModel();
                     System.out.println(model.getEntityByRow(row));
-                    setMarcaForm(model.getEntityByRow(row));
+                    setIvaForm(model.getEntityByRow(row));
                     //JOptionPane.showMessageDialog(table.getParent(), model.getEntityByRow(row));
                 }
             }
@@ -108,17 +108,12 @@ public class MarcaController implements ActionListener {
         }
 
         if (e.getSource() == gui.btnGuardar) {
-            boolean v_control = validarDatos();
-            if (v_control == true) {
-                JOptionPane.showMessageDialog(gui, "Favor completar los datos");
-                return;
-            }
             switch (operacion) {
                 case 'N':
-                    abm.insertar(getMarcaForm());
+                    abm.insertar(getIvaForm());
                     break;
                 case 'E':
-                    abm.modificar(getMarcaForm());
+                    abm.modificar(getIvaForm());
                     break;
             }
             habilitarCampos(false);
@@ -140,9 +135,9 @@ public class MarcaController implements ActionListener {
         } else {
             valorBuscar = gui.txt_buscar.getText().trim();
         }
-        List<Marca> lista = this.abm.listar(valorBuscar);
+        List<Iva> lista = this.abm.listar(valorBuscar);
         //asignar lista de marca a modelo de tabla
-        modelo.setMarcaList(lista);
+        modelo.setIvaList(lista);
         //vincular modelo con tabla(GUI)
         llenarTabla(gui.tabla);
     }
@@ -155,7 +150,7 @@ public class MarcaController implements ActionListener {
     }
 
     private void habilitarCampos(boolean h) {
-        //gui.txt_id.setEnabled(h);
+        gui.txt_id.setEnabled(h);
         gui.txt_descripcion.setEnabled(h);
     }
 
@@ -169,29 +164,18 @@ public class MarcaController implements ActionListener {
         gui.txt_descripcion.setText("");
     }
 
-    private Marca getMarcaForm() {
-        Marca marca = new Marca();
+    private Iva getIvaForm() {
+        Iva marca = new Iva();
         marca.setId(Integer.valueOf(gui.txt_id.getText()));
         marca.setDescripcion(gui.txt_descripcion.getText());
         return marca;
     }
 
-    //Asignar valores a la vista a partir del Modelo Marca
-    private void setMarcaForm(Marca m) {
+    //Asignar valores a la vista a partir del Modelo Iva
+    private void setIvaForm(Iva m) {
         gui.txt_id.setText(m.getId().toString());
         gui.txt_descripcion.setText(m.getDescripcion());
 
-    }
-
-    private boolean validarDatos() {
-        boolean vacio = false;
-        if (gui.txt_id.getText().isEmpty()) {
-            gui.txt_id.setText("0");
-        }
-        if (gui.txt_descripcion.getText().isEmpty()) {
-            vacio = true;
-        }
-        return vacio;
     }
 
 }

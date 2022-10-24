@@ -7,19 +7,19 @@ package modelos.tabla;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import modelos.Marca;
+import modelos.Articulo;
 
 /**
  *
  * @author Cris_
  */
-public class MarcaTablaModel extends AbstractTableModel {
+public class ArticuloTablaModel extends AbstractTableModel {
 
-    List<Marca> lista; // difinimos la lista 
-    private String[] columnNames = new String[]{"ID", "Descripcion"}; // definimos el nombre de las columnas
+    List<Articulo> lista; // difinimos la lista 
+    private String[] columnNames = new String[]{"ID", "Descripcion", "Marca", "P. Costo", "P. Venta"}; // definimos el nombre de las columnas
 
-    Class[] columClass = new Class[]{Integer.class, String.class};
-    
+    Class[] columClass = new Class[]{Integer.class, String.class, String.class, Integer.class, Integer.class};
+
     public String getColumnName(int i) {
         return columnNames[i];
     }
@@ -32,12 +32,12 @@ public class MarcaTablaModel extends AbstractTableModel {
 //        this.columnNames = columnNames;
 //    }
 
-    public List<Marca> getMarcaList() {
+    public List<Articulo> getArticuloList() {
         return lista;
     }
 
-    public void setMarcaList(List<Marca> marcaList) {
-        this.lista = marcaList;
+    public void setArticuloList(List<Articulo> articuloList) {
+        this.lista = articuloList;
     }
 
     @Override
@@ -49,20 +49,26 @@ public class MarcaTablaModel extends AbstractTableModel {
     public int getColumnCount() {
         return columnNames.length;
     }
-    
-    public Marca getEntityByRow(int index){
+
+    public Articulo getEntityByRow(int index) {
         return lista.get(index);
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Marca marca = lista.get(rowIndex);
+        Articulo articulo = lista.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
-                return marca.getId();
+                return articulo.getId();
             case 1:
-                return marca.getDescripcion();
+                return articulo.getDescripcion();
+            case 2:
+                return articulo.getMarca().getDescripcion();
+            case 3:
+                return articulo.getPrecio_costo();
+            case 4:
+                return articulo.getPrecio_venta();
 
         }
         return "";

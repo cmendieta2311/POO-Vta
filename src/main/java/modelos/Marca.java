@@ -40,10 +40,18 @@ public class Marca {
 
     @Override
     public String toString() {
-        return id+ "-"+this.descripcion; //To change body of generated methods, choose Tools | Templates.
+        return  descripcion ; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Integer cod1 = getId();
+        Integer cod2 = ((Marca)obj).getId();
+        if (cod1.equals(cod2))
+            return true;
+        return false; //To change body of generated methods, choose Tools | Templates.
     }
     
     
-    
-    
+   
 }

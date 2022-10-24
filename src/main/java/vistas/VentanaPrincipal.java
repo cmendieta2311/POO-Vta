@@ -40,7 +40,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mIva = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         Usuario = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuEmpresa = new javax.swing.JMenuItem();
         jMFacturacion = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -87,8 +87,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Usuario.setText("Usuario");
         jMMantenimiento.add(Usuario);
 
-        jMenuItem4.setText("Proveedor");
-        jMMantenimiento.add(jMenuItem4);
+        menuEmpresa.setText("Empresa");
+        menuEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEmpresaActionPerformed(evt);
+            }
+        });
+        jMMantenimiento.add(menuEmpresa);
 
         jMenuBar1.add(jMMantenimiento);
 
@@ -121,6 +126,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void mIvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mIvaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mIvaActionPerformed
+
+    private void menuEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEmpresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuEmpresaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,11 +178,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     public javax.swing.JMenuItem mIva;
     public javax.swing.JMenuItem mMarca;
     public javax.swing.JMenuItem mProducto;
+    public javax.swing.JMenuItem menuEmpresa;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,81 +13,81 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelos.Marca;
+import modelos.Iva;
 
 /**
  *
  * @author Cris_
  */
-public class MarcaDaoImpl implements DAO<Marca> {
+public class IvaDaoImpl implements DAO<Iva> {
     
-    private Connection conec; // la conexion de la base de datos
-    private PreparedStatement sentencia; // preparar sentencia
+    private Connection conec;
+    private PreparedStatement sentencia;
     
-    public MarcaDaoImpl() {
+    public IvaDaoImpl() {
         Conexion conectar = new Conexion();
         conec = conectar.ConectarBD();
     }
     
     @Override
-    public void insertar(Marca t) {
+    public void insertar(Iva t) {
         try {
             System.out.println(t);
-            String cSQL = "insert into marca (descripcion)values(?)";
+            String cSQL = "insert into iva (id,descripcion)values(?,?)";
             sentencia = conec.prepareStatement(cSQL);
-            //sentencia.setInt(1, t.getId());
-            sentencia.setString(1, t.getDescripcion());
+            sentencia.setInt(1, t.getId());
+            sentencia.setString(2, t.getDescripcion());
             int registro = sentencia.executeUpdate();
             System.out.print("Insertar " + registro);
         } catch (SQLException ex) {
-            Logger.getLogger(MarcaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IvaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     @Override
-    public void modificar(Marca t) {
+    public void modificar(Iva t) {
         try {
-            String cSQL="update marca set descripcion=? where id=?";
+            String cSQL="update iva set descripcion=? where id=?";
             sentencia = conec.prepareStatement(cSQL);
             sentencia.setString(1, t.getDescripcion());
             sentencia.setInt(2, t.getId());
             sentencia.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(MarcaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IvaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
     
     @Override
-    public void eliminar(Marca t) {
+    public void eliminar(Iva t) {
         try {
-            String cSQL="delete from marca where id=?";
+            String cSQL="delete from iva where id=?";
             sentencia= conec.prepareStatement(cSQL);
             sentencia.setInt(1, t.getId());
             sentencia.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(MarcaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IvaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     @Override
-    public List<Marca> listar(String valor) {
-        ArrayList<Marca> listaMarca = new ArrayList<>();
+    public List<Iva> listar(String valor) {
+        ArrayList<Iva> listaIva = new ArrayList<>();
         try {
-            sentencia = this.conec.prepareStatement("SELECT * FROM marca where descripcion ilike '%"+valor+"%' ORDER BY id ASC");
+            sentencia = this.conec.prepareStatement("SELECT * FROM iva where descripcion ilike '%"+valor+"%' ORDER BY id ASC");
             ResultSet rs = sentencia.executeQuery();
             
             while (rs.next()) {
-                Marca m = new Marca();
+                Iva m = new Iva();
                 m.setId(rs.getInt("id"));
                 m.setDescripcion(rs.getString("descripcion"));
-                listaMarca.add(m);
+                listaIva.add(m);
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(MarcaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IvaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return listaMarca;
+        return listaIva;
     }
     
 }

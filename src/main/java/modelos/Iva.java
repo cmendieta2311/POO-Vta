@@ -10,6 +10,7 @@ package modelos;
  * @author Cris_
  */
 public class Iva {
+
     Integer id;
     String descripcion;
 
@@ -36,6 +37,20 @@ public class Iva {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return descripcion; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Integer cod1 = getId();
+        Integer cod2 = ((Iva) obj).getId();
+        if (cod1.equals(cod2)) {
+            return true;
+        }
+        return false; //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
