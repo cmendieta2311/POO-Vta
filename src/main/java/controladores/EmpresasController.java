@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JTable;
-import modelos.Empresas;
-import modelos.dao.EmpresasDaoImpl;
+import modelos.Empresa;
+import modelos.dao.EmpresaDaoImpl;
 import modelos.tabla.EmpresasTablaModel;
 import vistas.GUIEmpresa;
 
@@ -21,10 +21,10 @@ import vistas.GUIEmpresa;
 public class EmpresasController implements ActionListener {
 
     GUIEmpresa gui;
-    EmpresasDaoImpl abm;
+    EmpresaDaoImpl abm;
     EmpresasTablaModel model;
 
-    public EmpresasController(GUIEmpresa gui, EmpresasDaoImpl abm) {
+    public EmpresasController(GUIEmpresa gui, EmpresaDaoImpl abm) {
         this.gui = gui;
         this.abm = abm;
         model = new EmpresasTablaModel();
@@ -73,7 +73,7 @@ public class EmpresasController implements ActionListener {
         } else {
             valorBuscar = gui.txt_buscar.getText().trim();
         }
-        List<Empresas> lista = this.abm.listar(valorBuscar);
+        List<Empresa> lista = this.abm.listar(valorBuscar);
         //asignar lista de marca a modelo de tabla
         model.setMarcaList(lista);
         //vincular modelo con tabla(GUI)
@@ -98,8 +98,8 @@ public class EmpresasController implements ActionListener {
         gui.btnCancelar.setEnabled(h);
     }
 
-    private Empresas getEmpresaForm() {
-        Empresas empresa = new Empresas();
+    private Empresa getEmpresaForm() {
+        Empresa empresa = new Empresa();
         empresa.setId(Integer.valueOf(gui.txt_id.getText()));
         empresa.setNombre(gui.txt_nombre.getText());
         empresa.setDireccion(gui.txt_direccion.getText());

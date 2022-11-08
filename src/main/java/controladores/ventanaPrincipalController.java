@@ -8,13 +8,17 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelos.dao.ArticuloDaoImpl;
-import modelos.dao.EmpresasDaoImpl;
+import modelos.dao.EmpresaDaoImpl;
 import modelos.dao.IvaDaoImpl;
 import modelos.dao.MarcaDaoImpl;
+import modelos.dao.PerfilDaoImpl;
+import modelos.dao.UsuarioDaoImpl;
 import vistas.GUIArticulo;
 import vistas.GUIEmpresa;
 //import vistas.GUIIva;
 import vistas.GUIMarca;
+import vistas.GUIPerfil;
+import vistas.GUIUsuario;
 import vistas.VentanaPrincipal;
 
 /**
@@ -32,6 +36,8 @@ public class ventanaPrincipalController implements ActionListener {
         gui.mIva.addActionListener(this);
         gui.menuEmpresa.addActionListener(this);
         gui.mProducto.addActionListener(this);
+        gui.mPerfil.addActionListener(this);
+        gui.mUsuario.addActionListener(this);
     }
 
     public void mostrarVentana() {
@@ -59,9 +65,17 @@ public class ventanaPrincipalController implements ActionListener {
         }
         
         if(e.getSource()==gui.menuEmpresa){
-            EmpresasDaoImpl abm= new EmpresasDaoImpl();
+            EmpresaDaoImpl abm= new EmpresaDaoImpl();
             GUIEmpresa gui = new GUIEmpresa(null, true);
             EmpresasController controller= new EmpresasController(gui, abm);
+            controller.mostrarVentana();
+            
+        }
+        
+         if(e.getSource()==gui.mPerfil){
+            PerfilDaoImpl abm= new PerfilDaoImpl();
+            GUIPerfil gui = new GUIPerfil(null, true);
+            PerfilController controller= new PerfilController(gui, abm);
             controller.mostrarVentana();
             
         }
@@ -70,6 +84,14 @@ public class ventanaPrincipalController implements ActionListener {
             ArticuloDaoImpl abm= new ArticuloDaoImpl();
             GUIArticulo gui = new GUIArticulo(null, true);
             ArticuloController controller= new ArticuloController(gui, abm);
+            controller.mostrarVentana();
+            
+        }
+         
+         if(e.getSource()==gui.mUsuario){
+            UsuarioDaoImpl abm= new UsuarioDaoImpl();
+            GUIUsuario gui = new GUIUsuario(null, true);
+            UsuarioController controller= new UsuarioController(gui, abm);
             controller.mostrarVentana();
             
         }

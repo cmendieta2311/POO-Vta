@@ -13,17 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelos.Empresas;
+import modelos.Empresa;
 
 /**
  *
  * @author Cris_
  */
-public class EmpresasDaoImpl implements DAO<Empresas>{
+public class EmpresaDaoImpl implements DAO<Empresa>{
      private Connection conec; // la conexion de la base de datos
     private PreparedStatement sentencia; // preparar sentencia
 
-    public EmpresasDaoImpl() {
+    public EmpresaDaoImpl() {
          Conexion conectar = new Conexion();
         conec = conectar.ConectarBD();
     }
@@ -31,7 +31,7 @@ public class EmpresasDaoImpl implements DAO<Empresas>{
     
 
     @Override
-    public void insertar(Empresas t) {
+    public void insertar(Empresa t) {
          try {
             System.out.println(t);
             String cSQL = "insert into empresa values(?,?,?,?)";
@@ -43,29 +43,29 @@ public class EmpresasDaoImpl implements DAO<Empresas>{
             int registro = sentencia.executeUpdate();
             System.out.print("Insertar " + registro);
         } catch (SQLException ex) {
-            Logger.getLogger(EmpresasDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EmpresaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public void modificar(Empresas t) {
+    public void modificar(Empresa t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void eliminar(Empresas t) {
+    public void eliminar(Empresa t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Empresas> listar(String valor) {
-         ArrayList<Empresas> miLista = new ArrayList<>();
+    public List<Empresa> listar(String valor) {
+         ArrayList<Empresa> miLista = new ArrayList<>();
         try {
             sentencia = this.conec.prepareStatement("SELECT * FROM empresa where nombre ilike '%"+valor+"%' ORDER BY id ASC");
             ResultSet rs = sentencia.executeQuery();
             
             while (rs.next()) {
-                Empresas m = new Empresas();
+                Empresa m = new Empresa();
                 m.setId(rs.getInt("id"));
                 m.setNombre(rs.getString("nombre"));
                 m.setDireccion(rs.getString("direccion"));

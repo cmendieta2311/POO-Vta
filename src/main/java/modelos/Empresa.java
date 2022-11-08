@@ -9,7 +9,7 @@ package modelos;
  *
  * @author Cris_
  */
-public class Empresas {
+public class Empresa {
     //definir propiedades de la clase
     Integer id;
     String nombre;
@@ -17,14 +17,14 @@ public class Empresas {
     String telefono;
     
     //definir constructores
-    public Empresas(Integer id, String nombre, String direccion, String telefono) {
+    public Empresa(Integer id, String nombre, String direccion, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
     }
 
-    public Empresas() {
+    public Empresa() {
     }
     
     
@@ -60,6 +60,11 @@ public class Empresas {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    @Override
+    public String toString() {
+        return  nombre;
     }
     
     

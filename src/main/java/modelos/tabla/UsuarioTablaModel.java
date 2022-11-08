@@ -7,18 +7,18 @@ package modelos.tabla;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import modelos.Empresa;
+import modelos.Usuario;
 
 /**
  *
  * @author Cris_
  */
-public class EmpresasTablaModel extends AbstractTableModel {
+public class UsuarioTablaModel extends AbstractTableModel {
 
-    List<Empresa> lista; // difinimos la lista 
-    private String[] columnNames = new String[]{"ID", "Nombre", "Direccion", "Telefono"}; // definimos el nombre de las columnas
+    List<Usuario> lista; // difinimos la lista 
+    private String[] columnNames = new String[]{"ID", "Nombre", "Apellido", "Empresa", "Perfil"}; // definimos el nombre de las columnas
 
-    Class[] columClass = new Class[]{Integer.class, String.class, String.class, String.class}; // los tipos de datos 
+    Class[] columClass = new Class[]{Integer.class, String.class, String.class, String.class, String.class};
 
     public String getColumnName(int i) {
         return columnNames[i];
@@ -27,13 +27,17 @@ public class EmpresasTablaModel extends AbstractTableModel {
     public Class<?> getColumnClass(int column) {
         return columClass[column];
     }
+//
+//    public void setColumnNames(String[] columnNames) {
+//        this.columnNames = columnNames;
+//    }
 
-    public List<Empresa> getMarcaList() {
+    public List<Usuario> getUsuarioList() {
         return lista;
     }
 
-    public void setMarcaList(List<Empresa> List) {
-        this.lista = List;
+    public void setUsuarioList(List<Usuario> marcaList) {
+        this.lista = marcaList;
     }
 
     @Override
@@ -46,14 +50,13 @@ public class EmpresasTablaModel extends AbstractTableModel {
         return columnNames.length;
     }
 
-    public Empresa getEntityByRow(int index) {
+    public Usuario getEntityByRow(int index) {
         return lista.get(index);
     }
 
-    //definir valor a mostrar
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Empresa item = lista.get(rowIndex);
+        Usuario item = lista.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
@@ -61,9 +64,11 @@ public class EmpresasTablaModel extends AbstractTableModel {
             case 1:
                 return item.getNombre();
             case 2:
-                return item.getDireccion();
+                return item.getApellido();
             case 3:
-                return item.getTelefono();
+                return item.getEmpresa().getNombre();
+            case 4:
+                return item.getPerfil().getDescripcion();
 
         }
         return "";

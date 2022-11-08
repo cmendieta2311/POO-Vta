@@ -7,19 +7,19 @@ package modelos.tabla;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import modelos.Empresa;
+import modelos.Perfil;
 
 /**
  *
  * @author Cris_
  */
-public class EmpresasTablaModel extends AbstractTableModel {
+public class PerfilTablaModel extends AbstractTableModel {
 
-    List<Empresa> lista; // difinimos la lista 
-    private String[] columnNames = new String[]{"ID", "Nombre", "Direccion", "Telefono"}; // definimos el nombre de las columnas
+    List<Perfil> lista; // difinimos la lista 
+    private String[] columnNames = new String[]{"ID", "Descripcion"}; // definimos el nombre de las columnas
 
-    Class[] columClass = new Class[]{Integer.class, String.class, String.class, String.class}; // los tipos de datos 
-
+    Class[] columClass = new Class[]{Integer.class, String.class};
+    
     public String getColumnName(int i) {
         return columnNames[i];
     }
@@ -27,13 +27,17 @@ public class EmpresasTablaModel extends AbstractTableModel {
     public Class<?> getColumnClass(int column) {
         return columClass[column];
     }
+//
+//    public void setColumnNames(String[] columnNames) {
+//        this.columnNames = columnNames;
+//    }
 
-    public List<Empresa> getMarcaList() {
+    public List<Perfil> getPerfilList() {
         return lista;
     }
 
-    public void setMarcaList(List<Empresa> List) {
-        this.lista = List;
+    public void setPerfilList(List<Perfil> marcaList) {
+        this.lista = marcaList;
     }
 
     @Override
@@ -45,25 +49,20 @@ public class EmpresasTablaModel extends AbstractTableModel {
     public int getColumnCount() {
         return columnNames.length;
     }
-
-    public Empresa getEntityByRow(int index) {
+    
+    public Perfil getEntityByRow(int index){
         return lista.get(index);
     }
 
-    //definir valor a mostrar
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Empresa item = lista.get(rowIndex);
+        Perfil item = lista.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
                 return item.getId();
             case 1:
-                return item.getNombre();
-            case 2:
-                return item.getDireccion();
-            case 3:
-                return item.getTelefono();
+                return item.getDescripcion();
 
         }
         return "";

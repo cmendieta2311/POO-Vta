@@ -39,8 +39,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mMarca = new javax.swing.JMenuItem();
         mIva = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        Usuario = new javax.swing.JMenuItem();
+        mUsuario = new javax.swing.JMenuItem();
         menuEmpresa = new javax.swing.JMenuItem();
+        mPerfil = new javax.swing.JMenuItem();
         jMFacturacion = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -84,8 +85,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem3.setText("Cliente");
         jMMantenimiento.add(jMenuItem3);
 
-        Usuario.setText("Usuario");
-        jMMantenimiento.add(Usuario);
+        mUsuario.setText("Usuario");
+        jMMantenimiento.add(mUsuario);
 
         menuEmpresa.setText("Empresa");
         menuEmpresa.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +95,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         jMMantenimiento.add(menuEmpresa);
+
+        mPerfil.setText("Perfil");
+        mPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mPerfilActionPerformed(evt);
+            }
+        });
+        jMMantenimiento.add(mPerfil);
 
         jMenuBar1.add(jMMantenimiento);
 
@@ -130,6 +139,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void menuEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEmpresaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuEmpresaActionPerformed
+
+    private void mPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mPerfilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,7 +181,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMProducto;
-    private javax.swing.JMenuItem Usuario;
     private javax.swing.JMenu jMArchivo;
     private javax.swing.JMenu jMFacturacion;
     private javax.swing.JMenu jMMantenimiento;
@@ -182,7 +194,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     public javax.swing.JMenuItem mIva;
     public javax.swing.JMenuItem mMarca;
+    public javax.swing.JMenuItem mPerfil;
     public javax.swing.JMenuItem mProducto;
+    public javax.swing.JMenuItem mUsuario;
     public javax.swing.JMenuItem menuEmpresa;
     // End of variables declaration//GEN-END:variables
 }
